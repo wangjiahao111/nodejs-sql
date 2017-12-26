@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="user">
+    <input type="password" id="pwd">
+    <input type="button" id="btn" value="login">
+    <script src="jquery.js"></script>
+    <script>
+        $('#btn').on('click', function() {
+            $.ajax({
+                url: '/logs',
+                type: 'post',
+                data: {
+                    user: $('#user').val(),
+                    pwd: $('#pwd').val()
+                },
+                success: function(data) {
+                    alert(data.msg);
+                    if (data.code === 0) {
+                        location.href = '/user';
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
